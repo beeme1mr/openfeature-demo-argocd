@@ -12,7 +12,7 @@ data:
             "on": true,
             "off": false
           },
-          "defaultVariant": "off"
+          "defaultVariant": "on"
         },
         "hex-color": {
           "returnType": "string",

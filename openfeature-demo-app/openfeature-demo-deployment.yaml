@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-feature-demo-deployment
+  labels:
+    app: open-feature-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-feature-demo
+  template:
+    metadata:
+      labels:
+        app: open-feature-demo
+    spec:
+      containers:
+        - name: open-feature-demo
+          image: ghcr.io/open-feature/open-feature-demo:latest
+          args:
+            - flagd
+          ports:
+            - containerPort: 30000
+        - name: flagd
+          image: ghcr.io/open-feature/flagd:latest
+          args: ["start", "--uri", "/etc/flagd/config.json"]
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/flagd
+      volumes:
+        - name: config-volume
+          configMap:
+            # Provide the name of the ConfigMap containing the files you want
+            # to add to the container
+            name: feature-flags

@@ -22,7 +22,7 @@ data:
             "blue": "0000CC",
             "yellow": "yellow"
           },
-          "defaultVariant": "blue",
+          "defaultVariant": "red",
           "state": "ENABLED"
         },
         "fib-algo": {

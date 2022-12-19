@@ -22,8 +22,8 @@ spec:
           ports:
             - containerPort: 30000
         - name: flagd
-          image: ghcr.io/open-feature/flagd:latest
-          args: ["start", "--uri", "/etc/flagd/config.json"]
+          image: ghcr.io/open-feature/flagd:v0.2.7
+          args: ["start", "--uri", "file:/etc/flagd/config.json"]
           volumeMounts:
             - name: config-volume
               mountPath: /etc/flagd
